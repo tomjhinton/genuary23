@@ -1,0 +1,46 @@
+@font-face {
+    font-family: Art;
+    src: url('../public/Art Dystopia 2.otf');
+  }
+
+  @font-face {
+    font-family: Ferrite;
+    src: url('../public/FerriteCoreDX-Regular.otf');
+  }
+
+ 
+html,
+body,
+#root
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.title{
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    color: black;
+    text-transform: uppercase;
+    font-family: Art;
+    font-size: 4em;
+    letter-spacing: 1em;
+
+}
+
+.linkTo{
+    letter-spacing: 1em;
+    text-transform: uppercase;
+    font-size: 2em;
+    font-family: Ferrite;
+    text-decoration: none;
+    color: lime;
+    background-color: black;
+    width: 25%;
+    height: 5%;
+}
