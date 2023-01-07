@@ -6,7 +6,9 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
-  Route
+  Route,
+  HashRouter,
+  createHashRouter
 } from "react-router-dom";
 
 import Home from './Home.js'
@@ -18,7 +20,7 @@ import Debug from './debug/Debug'
 import Steal from './steal/Steal'
 
 
-const router = createBrowserRouter(
+const router = createHashRouter(
     createRoutesFromElements(
         <>
       <Route   errorElement={<Home />} />
@@ -37,6 +39,7 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
     <>
     <h1 className="title">Genuary-2023</h1>
+
   <RouterProvider router={router} />
   </>
 );

@@ -32,7 +32,7 @@ export default function Home(){
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='loop' }
+       onClick={()=>window.location ='#/loop' }
         
         >
           {' GENUARY is an artificially generated month of time where we build code that makes beautiful things.'}

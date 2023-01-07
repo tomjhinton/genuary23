@@ -67,7 +67,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
         }
          onPointerOut={()=>  document.body.style.cursor = 'auto'}
-         onClick={()=>window.location ='glitch' }
+         onClick={()=>window.location ='#/glitch' }
         
         >
           {'>'.toUpperCase()}
@@ -88,7 +88,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='loop' }
+       onClick={()=>window.location ='#/loop' }
         
         >
           {'<'.toUpperCase()}

@@ -69,7 +69,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = 'intersections' }
+     onClick={()=>window.location = '#/intersections' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -90,7 +90,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='ten' }
+       onClick={()=>window.location ='#/ten' }
         
         >
           {'<'.toUpperCase()}
