@@ -18,6 +18,7 @@ import Glitch from './glitch/Glitch.js'
 import Intersections from './intersections/Intersections'
 import Debug from './debug/Debug'
 import Steal from './steal/Steal'
+import Cover from './cover/Cover'
 
 
 const router = createHashRouter(
@@ -31,6 +32,7 @@ const router = createHashRouter(
         <Route path="/intersections" element={<Intersections />} />
         <Route path="/debug" element={<Debug />} />
         <Route path="/steal" element={<Steal />} />
+        <Route path="/cover" element={<Cover />} />
         </>
      
     )

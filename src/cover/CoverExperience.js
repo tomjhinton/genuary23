@@ -1,4 +1,4 @@
-import {useVideoTexture, OrbitControls , shaderMaterial, Center, Text, Float} from '@react-three/drei'
+import { OrbitControls , shaderMaterial, Center, Text, Float} from '@react-three/drei'
 import React, { useRef, useState } from 'react'
 import {  useFrame, extend } from '@react-three/fiber'
 import vertexShader from './shaders/vertex.js'
@@ -9,14 +9,13 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 
 export default function Experience(){
-  const texture = useVideoTexture("mario.mp4")
-  console.log(texture)
- 
+  const picture = useLoader(TextureLoader,  `cure.jpg`)
+
     const PlaneMaterial = shaderMaterial(
 
         {
             uTime: 0,
-            pic: texture,
+            pic: picture,
         },
         vertexShader,
         fragmentShader
@@ -44,13 +43,13 @@ useFrame((state, delta) => {
          <Text
         
         font="../Basement.otf"
-        scale={ 7 }
-       
-        position={ [ .0, -2.65, 0 ] }
+        scale={ 1.5 }
+       maxWidth={1}
+        position={ [ .0, -2.85, 0 ] }
         
         
         >
-          {'Steal Like An Artist'.toUpperCase()}
+          {'Sample a color palette from your favorite movie/album cover'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -70,7 +69,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/cover' }
+     onClick={()=>window.location = '' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -91,7 +90,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/debug' }
+       onClick={()=>window.location ='#/steal' }
         
         >
           {'<'.toUpperCase()}
@@ -111,7 +110,7 @@ useFrame((state, delta) => {
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
       <planeGeometry args={[4, 4]} />
-      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} pic={texture}/>
+      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} pic={picture}/>
       
     </mesh>
       </>
