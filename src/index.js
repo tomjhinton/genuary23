@@ -19,6 +19,7 @@ import Intersections from './intersections/Intersections'
 import Debug from './debug/Debug'
 import Steal from './steal/Steal'
 import Cover from './cover/Cover'
+import SDF from './sdf/SDF'
 
 
 const router = createHashRouter(
@@ -33,6 +34,7 @@ const router = createHashRouter(
         <Route path="/debug" element={<Debug />} />
         <Route path="/steal" element={<Steal />} />
         <Route path="/cover" element={<Cover />} />
+        <Route path="/sdf" element={<SDF />} />
         </>
      
     )

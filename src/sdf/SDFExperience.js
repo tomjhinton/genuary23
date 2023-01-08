@@ -1,4 +1,4 @@
-import { OrbitControls , shaderMaterial, Center, Text, Float} from '@react-three/drei'
+import {useVideoTexture, OrbitControls , shaderMaterial, Center, Text, Float} from '@react-three/drei'
 import React, { useRef, useState } from 'react'
 import {  useFrame, extend } from '@react-three/fiber'
 import vertexShader from './shaders/vertex.js'
@@ -9,13 +9,14 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 
 export default function Experience(){
-  const picture = useLoader(TextureLoader,  `cure.jpg`)
-
+  
+ 
+ 
     const PlaneMaterial = shaderMaterial(
 
         {
             uTime: 0,
-            pic: picture,
+           
         },
         vertexShader,
         fragmentShader
@@ -33,7 +34,7 @@ useFrame((state, delta) => {
 
 
 // Subscribe this component to the render-loop, rotate the mesh every frame
-// useFrame((state, delta) => (ref.current.rotation.x += delta))
+useFrame((state, delta) => (ref.current.rotation.y += (delta*.5)))
     return(
 
 <>
@@ -43,13 +44,13 @@ useFrame((state, delta) => {
          <Text
         
         font="../Basement.otf"
-        scale={ 1.5 }
-       maxWidth={1}
-        position={ [ .0, -2.85, 0 ] }
+        scale={ 7 }
+       
+        position={ [ .0, -2.65, 0 ] }
         
         
         >
-          {'Sample a color palette from your favorite movie/album cover'.toUpperCase()}
+          {'SDF'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -69,7 +70,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/sdf' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -110,7 +111,7 @@ useFrame((state, delta) => {
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
       <planeGeometry args={[4, 4]} />
-      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} pic={picture}/>
+      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} />
       
     </mesh>
       </>
