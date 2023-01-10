@@ -9,9 +9,15 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 
 
+
 export default function Experience(){
   
- 
+  function Cable({ start, end, v1 = new THREE.Vector3(), v2 = new THREE.Vector3() }) {
+    const ref = useRef()
+    useFrame(() => ref.current.setPoints(start.current.getWorldPosition(v1), end.current.getWorldPosition(v2)), [])
+    return <QuadraticBezierLine ref={ref} lineWidth={4} color="green"  depthWrite={false}/>
+  }
+  
  
     const PlaneMaterial = shaderMaterial(
 
@@ -25,6 +31,7 @@ export default function Experience(){
     extend({PlaneMaterial})
 
 const ref = useRef()
+const title = useRef()
 // Hold state for hovered and clicked events
 const [hovered, hover] = useState(false)
 const [clicked, click] = useState(false)
@@ -35,7 +42,16 @@ useFrame((state, delta) => {
 
 
 // Subscribe this component to the render-loop, rotate the mesh every frame
-useFrame((state, delta) => (ref.current.rotation.y += (delta*.5)))
+useFrame((state, delta) => (
+  ref.current.position.y += Math.sin(state.clock.getElapsedTime()) * .01))
+  
+  useFrame((state, delta) => (
+    ref.current.position.x += Math.sin(state.clock.getElapsedTime()) * .02))
+
+    useFrame((state, delta) => (
+      ref.current.position.z += Math.sin(state.clock.getElapsedTime()) * .005))
+
+
     return(
 
 <>
@@ -43,7 +59,7 @@ useFrame((state, delta) => (ref.current.rotation.y += (delta*.5)))
 
 <Float>
          <Text
-        
+        ref={title}
         font="../Basement.otf"
         scale={ 7 }
        
@@ -51,7 +67,7 @@ useFrame((state, delta) => (ref.current.rotation.y += (delta*.5)))
         
         
         >
-          {'SDF'.toUpperCase()}
+          {'Plant'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -71,7 +87,7 @@ useFrame((state, delta) => (ref.current.rotation.y += (delta*.5)))
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/plant' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -92,7 +108,7 @@ useFrame((state, delta) => (ref.current.rotation.y += (delta*.5)))
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/steal' }
+       onClick={()=>window.location ='#/sdf' }
         
         >
           {'<'.toUpperCase()}
@@ -103,7 +119,7 @@ useFrame((state, delta) => (ref.current.rotation.y += (delta*.5)))
         </Text>
         </Float>
 
-
+<Float>
 <mesh
      
       ref={ref}
@@ -111,10 +127,13 @@ useFrame((state, delta) => (ref.current.rotation.y += (delta*.5)))
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
-      <planeGeometry args={[4, 4]} />
-      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} />
+      <circleGeometry args={[1, 32]} />
+      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide}/>
       
     </mesh>
+    </Float>
+
+    <Cable start={title} end={ref} />
       </>
     )
 }

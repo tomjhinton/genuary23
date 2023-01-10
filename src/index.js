@@ -20,6 +20,7 @@ import Debug from './debug/Debug'
 import Steal from './steal/Steal'
 import Cover from './cover/Cover'
 import SDF from './sdf/SDF'
+import Plant from './plants/Plant'
 
 
 const router = createHashRouter(
@@ -35,6 +36,7 @@ const router = createHashRouter(
         <Route path="/steal" element={<Steal />} />
         <Route path="/cover" element={<Cover />} />
         <Route path="/sdf" element={<SDF />} />
+        <Route path="/plant" element={<Plant />} />
         </>
      
     )
