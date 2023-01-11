@@ -21,6 +21,8 @@ import Steal from './steal/Steal'
 import Cover from './cover/Cover'
 import SDF from './sdf/SDF'
 import Plant from './plants/Plant'
+import Super from './supermatism/Super'
+
 
 
 const router = createHashRouter(
@@ -37,6 +39,7 @@ const router = createHashRouter(
         <Route path="/cover" element={<Cover />} />
         <Route path="/sdf" element={<SDF />} />
         <Route path="/plant" element={<Plant />} />
+        <Route path="/super" element={<Super />} />
         </>
      
     )
