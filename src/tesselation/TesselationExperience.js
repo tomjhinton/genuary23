@@ -32,9 +32,10 @@ const planeMaterial = useRef()
 <>
 <OrbitControls makeDefault enableZoom={true} maxPolarAngle={Math.PI * .5}/>
 
-<Float>
 
-<Float>
+<Float
+floatIntensity={.5}
+floatingRange={[-.05, .05]}>
         
         <Html
   as='div'
@@ -44,6 +45,10 @@ const planeMaterial = useRef()
  
 </Html>
         </Float>
+
+<Float>
+
+
 
          <Text
         ref={title}
