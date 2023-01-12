@@ -22,6 +22,8 @@ import Cover from './cover/Cover'
 import SDF from './sdf/SDF'
 import Plant from './plants/Plant'
 import Super from './supermatism/Super'
+import Tesselation from './tesselation/Tesselation'
+
 
 
 
@@ -40,6 +42,7 @@ const router = createHashRouter(
         <Route path="/sdf" element={<SDF />} />
         <Route path="/plant" element={<Plant />} />
         <Route path="/super" element={<Super />} />
+        <Route path="/tesselation" element={<Tesselation />} />
         </>
      
     )
