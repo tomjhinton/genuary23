@@ -1,4 +1,4 @@
-import {useVideoTexture, OrbitControls , shaderMaterial, Center, Text, Float, QuadraticBezierLine, Html} from '@react-three/drei'
+import { OrbitControls , shaderMaterial, Center, Text, Float} from '@react-three/drei'
 import React, { useRef, useState } from 'react'
 import {  useFrame, extend } from '@react-three/fiber'
 import vertexShader from './shaders/vertex.js'
@@ -8,50 +8,40 @@ import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 
-
-
 export default function Experience(){
-  
-  
-  
  
-   
+
+    const PlaneMaterial = shaderMaterial(
+
+        {
+            uTime: 0,
+           
+        },
+        vertexShader,
+        fragmentShader
+    )
+    extend({PlaneMaterial})
 
 const ref = useRef()
-const title = useRef()
 // Hold state for hovered and clicked events
 const [hovered, hover] = useState(false)
 const [clicked, click] = useState(false)
 const planeMaterial = useRef()
+useFrame((state, delta) => {
+    planeMaterial.current.uTime += delta
+})
 
 
-
-
+// Subscribe this component to the render-loop, rotate the mesh every frame
+// useFrame((state, delta) => (ref.current.rotation.x += delta))
     return(
 
 <>
 <OrbitControls makeDefault enableZoom={true} maxPolarAngle={Math.PI * .5}/>
 
-
-<Float
-floatIntensity={.5}
-floatingRange={[-.05, .05]}>
-        
-        <Html
-  as='div'
- position={[-6, -2, 0]}
->
-  <a className='colab' href='https://twitter.com/OrrKislev'> {' Made with Orr Kislev '}</a>
- 
-</Html>
-        </Float>
-
 <Float>
-
-
-
          <Text
-        ref={title}
+        
         font="../Basement.otf"
         scale={ 7 }
        
@@ -59,7 +49,7 @@ floatingRange={[-.05, .05]}>
         
         
         >
-          {'Tesselation'.toUpperCase()}
+          {'Sine'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -79,7 +69,7 @@ floatingRange={[-.05, .05]}>
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/always' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -100,7 +90,7 @@ floatingRange={[-.05, .05]}>
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/super' }
+       onClick={()=>window.location ='#/asemic' }
         
         >
           {'<'.toUpperCase()}
@@ -111,27 +101,18 @@ floatingRange={[-.05, .05]}>
         </Text>
         </Float>
 
-       
 
-<Float>
-
-<Html
-  transform
-  wrapperClass='htmlScreen'
-  distanceFactor={6.57}
-               
->
-<iframe src="https://csb-o0z69j.netlify.app/"
+<mesh
      
-     title="tesselation"
-     
-   ></iframe>
-
-</Html>
-
-    </Float>
-
-    
+      ref={ref}
+      scale={clicked ? 1. : 1}
+      onClick={(event) => click(!clicked)}
+      onPointerOver={(event) => hover(true)}
+      onPointerOut={(event) => hover(false)}>
+      <planeGeometry args={[4, 2, 256, 256]} />
+      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} />
+      
+    </mesh>
       </>
     )
 }

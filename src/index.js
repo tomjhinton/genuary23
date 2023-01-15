@@ -23,6 +23,10 @@ import SDF from './sdf/SDF'
 import Plant from './plants/Plant'
 import Super from './supermatism/Super'
 import Tesselation from './tesselation/Tesselation'
+import Always from './always/Always'
+
+import Asemic from './asemic/asemic'
+import Sine from './sine/Sine'
 
 
 
@@ -43,6 +47,9 @@ const router = createHashRouter(
         <Route path="/plant" element={<Plant />} />
         <Route path="/super" element={<Super />} />
         <Route path="/tesselation" element={<Tesselation />} />
+        <Route path="/always" element={<Always />} />
+        <Route path="/asemic" element={<Asemic />} />
+        <Route path="/sine" element={<Sine />} />
         </>
      
     )

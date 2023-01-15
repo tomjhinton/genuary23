@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
-import Experience from './DebugExperience'
+import Experience from './AlwaysExperience'
 
-export default function Debug(){
+export default function Always(){
 
 
 return(

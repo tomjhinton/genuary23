@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
-import Experience from './DebugExperience'
+import Experience from './AsemicExperience'
 
-export default function Debug(){
+export default function Asemic(){
 
 
 return(
