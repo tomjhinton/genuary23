@@ -27,6 +27,8 @@ import Always from './always/Always'
 
 import Asemic from './asemic/asemic'
 import Sine from './sine/Sine'
+import Reflection from './reflection/Reflection'
+
 
 
 
@@ -50,6 +52,7 @@ const router = createHashRouter(
         <Route path="/always" element={<Always />} />
         <Route path="/asemic" element={<Asemic />} />
         <Route path="/sine" element={<Sine />} />
+        <Route path="/reflection" element={<Reflection />} />
         </>
      
     )
