@@ -116,7 +116,7 @@ useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
-      <boxGeometry args={[2.5, 2.5, 2.5, 40, 40, 40]} />
+      <boxGeometry args={[2.5, 2.5, 2.5]} />
       <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} transparent depthWrite={false}/>
       
     </mesh>
@@ -128,7 +128,7 @@ useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
-      <boxGeometry args={[1.5, 1.5, 1.5, 40, 40, 40]} />
+      <boxGeometry args={[1.5, 1.5, 1.5]} />
       <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} transparent depthWrite={false}/>
       
     </mesh>
@@ -140,7 +140,7 @@ useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
-      <boxGeometry args={[1., 1., 1., 40, 40, 40]} />
+      <boxGeometry args={[1., 1., 1.]} />
       <planeMaterial ref={planeMaterial} side={THREE.DoubleSide}  transparent depthWrite={false}/>
       
     </mesh>
