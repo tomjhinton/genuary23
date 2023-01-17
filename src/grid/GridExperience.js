@@ -56,7 +56,7 @@ useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
         
         
         >
-          {' Grid Within a grid within a grid'.toUpperCase()}
+          {'A grid inside a grid inside a grid'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
