@@ -28,6 +28,7 @@ import Always from './always/Always'
 import Asemic from './asemic/asemic'
 import Sine from './sine/Sine'
 import Reflection from './reflection/Reflection'
+import Grid from './grid/Grid'
 
 
 
@@ -53,6 +54,7 @@ const router = createHashRouter(
         <Route path="/asemic" element={<Asemic />} />
         <Route path="/sine" element={<Sine />} />
         <Route path="/reflection" element={<Reflection />} />
+        <Route path="/grid" element={<Grid />} />
         </>
      
     )
