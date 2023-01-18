@@ -29,6 +29,8 @@ import Asemic from './asemic/asemic'
 import Sine from './sine/Sine'
 import Reflection from './reflection/Reflection'
 import Grid from './grid/Grid'
+import NotGrid from './notGrid/NotGrid'
+
 
 
 
@@ -55,6 +57,7 @@ const router = createHashRouter(
         <Route path="/sine" element={<Sine />} />
         <Route path="/reflection" element={<Reflection />} />
         <Route path="/grid" element={<Grid />} />
+        <Route path="/notGrid" element={<NotGrid />} />
         </>
      
     )
@@ -62,7 +65,7 @@ const router = createHashRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <>
-    <h1 className="title">Genuary-2023</h1>
+    <h1 className="titular">Genuary 2023</h1>
 
   <RouterProvider router={router} />
   </>

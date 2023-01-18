@@ -1,4 +1,4 @@
-import { OrbitControls , shaderMaterial, Center, Text, Float} from '@react-three/drei'
+import { OrbitControls , shaderMaterial, Center, Text, Float, Point, Points} from '@react-three/drei'
 import React, { useRef, useState } from 'react'
 import {  useFrame, extend } from '@react-three/fiber'
 import vertexShader from './shaders/vertex.js'
@@ -7,40 +7,70 @@ import * as THREE from 'three'
 import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
+function sliceIntoChunks(arr, chunkSize) {
+  const res = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+      const chunk = arr.slice(i, i + chunkSize);
+      res.push(chunk);
+  }
+  return res;
+}
+
+let sphere = new THREE.SphereGeometry( 1, 20, 20 );
+
+let plane = new THREE.PlaneGeometry( 3, 3, 20, 20 );
+
+
+
+
+let sphereArr = Array.from(sliceIntoChunks(sphere.attributes.position.array, 3))
+let planeArr = Array.from(sliceIntoChunks(plane.attributes.position.array, 3))
 
 export default function Experience(){
  
 
-    const PlaneMaterial = shaderMaterial(
+    const PointMaterial = shaderMaterial(
 
         {
             uTime: 0,
+            uResolution: {x: screen.width, y: screen.height}
+            
            
         },
         vertexShader,
-        fragmentShader
+        fragmentShader,
+    
         
     )
-    extend({PlaneMaterial})
+    extend({PointMaterial})
+
+   
 
 const ref = useRef()
-const ref2 = useRef()
-const ref3 = useRef()
-
 // Hold state for hovered and clicked events
 const [hovered, hover] = useState(false)
 const [clicked, click] = useState(false)
-const planeMaterial = useRef()
+
+
+
+
+const pointMaterial = useRef()
 useFrame((state, delta) => {
-    planeMaterial.current.uTime += delta
+   pointMaterial.current.uTime += delta
+
+    if (
+     pointMaterial.current.uResolution.x === 0 &&
+     pointMaterial.current.uResolution.y === 0
+    ) {
+     pointMaterial.current.uResolution.x = screen.width;
+     pointMaterial.current.uResolution.y = screen.height;
+     
+    }
 })
 
 
 // Subscribe this component to the render-loop, rotate the mesh every frame
-useFrame((state, delta) => (ref.current.rotation.x += (delta * .4)))
-useFrame((state, delta) => (ref2.current.rotation.y += (delta * .3)))
-useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
-
+// useFrame((state, delta) => (ref.current.rotation.x += delta))
     return(
 
 <>
@@ -50,13 +80,13 @@ useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
          <Text
         
         font="../Basement.otf"
-        scale={ 2 }
-       maxWidth={1}
+        scale={4. }
+        maxWidth={1}
         position={ [ .0, -2.65, 0 ] }
         
         
         >
-          {'A grid inside a grid inside a grid'.toUpperCase()}
+          {'Definitely not a grid'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -76,7 +106,7 @@ useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/notGrid' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -97,7 +127,7 @@ useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/reflection' }
+       onClick={()=>window.location ='#/grid' }
         
         >
           {'<'.toUpperCase()}
@@ -109,41 +139,23 @@ useFrame((state, delta) => (ref3.current.rotation.z += (delta * .2)))
         </Float>
 
 
-<mesh
-     
-      ref={ref}
-      scale={clicked ? 1. : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}>
-      <boxGeometry args={[2.5, 2.5, 2.5]} />
-      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} transparent depthWrite={false}/>
+    <Points
+  limit={1000} 
+  range={1000} 
+  ref={ref}
+    >
       
-    </mesh>
+      {planeArr.map( (x, i) => {
+        
+        return(
+          <>
+        <Point position={[x[0], x[1], x[2]]}  key={i}   
+        />
+         <pointMaterial ref={pointMaterial} depthWrite={false} transparent />
+        </>
+      )} )}
 
-    <mesh
-     
-      ref={ref2}
-      scale={clicked ? 1. : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}>
-      <boxGeometry args={[1.5, 1.5, 1.5]} />
-      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide} transparent depthWrite={false}/>
-      
-    </mesh>
-
-    <mesh
-     
-      ref={ref3}
-      scale={clicked ? 1. : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}>
-      <boxGeometry args={[1., 1., 1.]} />
-      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide}  transparent depthWrite={false}/>
-      
-    </mesh>
+    </Points>
       </>
     )
 }
