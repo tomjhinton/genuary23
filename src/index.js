@@ -30,6 +30,8 @@ import Sine from './sine/Sine'
 import Reflection from './reflection/Reflection'
 import Grid from './grid/Grid'
 import NotGrid from './notGrid/NotGrid'
+import BAndW from './bAndW/B&W'
+
 
 
 
@@ -58,6 +60,7 @@ const router = createHashRouter(
         <Route path="/reflection" element={<Reflection />} />
         <Route path="/grid" element={<Grid />} />
         <Route path="/notGrid" element={<NotGrid />} />
+        <Route path="/bAndW" element={<BAndW />} />
         </>
      
     )

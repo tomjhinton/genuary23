@@ -3,6 +3,11 @@ import React, { useRef, useState } from 'react'
 import {  useFrame, extend } from '@react-three/fiber'
 import vertexShader from './shaders/vertex.js'
 import fragmentShader from './shaders/fragment.js'
+
+import vertexShaderP from './shaders/vertexP.js'
+import fragmentShaderP from './shaders/fragmentP.js'
+
+
 import * as THREE from 'three'
 import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -44,9 +49,21 @@ export default function Experience(){
     )
     extend({PointMaterial})
 
+
+    const PlaneMaterial = shaderMaterial(
+
+      {
+          uTime: 0,
+         
+      },
+      vertexShaderP,
+      fragmentShaderP
+  )
+  extend({PlaneMaterial})
    
 
 const ref = useRef()
+const planeRef = useRef()
 // Hold state for hovered and clicked events
 const [hovered, hover] = useState(false)
 const [clicked, click] = useState(false)
@@ -55,8 +72,10 @@ const [clicked, click] = useState(false)
 
 
 const pointMaterial = useRef()
+const planeMaterial = useRef()
 useFrame((state, delta) => {
    pointMaterial.current.uTime += delta
+   planeMaterial.current.uTime += delta
 
     if (
      pointMaterial.current.uResolution.x === 0 &&
@@ -81,12 +100,12 @@ useFrame((state, delta) => {
         
         font="../Basement.otf"
         scale={4. }
-        maxWidth={1}
+        maxWidth={2}
         position={ [ .0, -2.65, 0 ] }
         
         
         >
-          {'Definitely not a grid'.toUpperCase()}
+          {'Black and white'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -106,7 +125,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/bAndW' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -127,7 +146,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/grid' }
+       onClick={()=>window.location ='#/notGrid' }
         
         >
           {'<'.toUpperCase()}
@@ -156,6 +175,19 @@ useFrame((state, delta) => {
       )} )}
 
     </Points>
+
+
+    <mesh
+     
+      ref={planeRef}
+      scale={clicked ? 1. : 1}
+      onClick={(event) => click(!clicked)}
+      onPointerOver={(event) => hover(true)}
+      onPointerOut={(event) => hover(false)}>
+      <planeGeometry args={[4, 4]} />
+      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide}/>
+      
+    </mesh>
       </>
     )
 }
