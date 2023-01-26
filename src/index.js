@@ -33,6 +33,8 @@ import NotGrid from './notGrid/NotGrid'
 import BAndW from './bAndW/B&W'
 import Deco from './deco/Deco'
 import PersianRug from './persianRug/PersianRug'
+import Shadows from './shadows/Shadows'
+
 
 
 
@@ -67,6 +69,7 @@ const router = createHashRouter(
         <Route path="/bAndW" element={<BAndW />} />
         <Route path="/deco" element={<Deco />} />
         <Route path="/persianRug" element={<PersianRug />} />
+        <Route path="/shadows" element={<Shadows />} />
 
         </>
      
