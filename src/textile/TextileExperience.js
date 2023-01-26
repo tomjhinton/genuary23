@@ -49,7 +49,7 @@ useFrame((state, delta) => {
         
         
         >
-          {'More Moiré'.toUpperCase()}
+          {'Textile'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -69,7 +69,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/textile' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -90,7 +90,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/shadows' }
+       onClick={()=>window.location ='#/moire' }
         
         >
           {'<'.toUpperCase()}
@@ -109,7 +109,7 @@ useFrame((state, delta) => {
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
-      <planeGeometry args={[4, 4]} />
+      <planeGeometry args={[4, 4, 100, 100]} />
       <planeMaterial ref={planeMaterial} side={THREE.DoubleSide}/>
       
     </mesh>
