@@ -43,13 +43,13 @@ useFrame((state, delta) => {
          <Text
         
         font="../Basement.otf"
-        scale={ 7 }
+        scale={ 6 }
        
-        position={ [ .0, -2.65, 0 ] }
+        position={ [ .0, -2.75, 0 ] }
         
         
         >
-          {'Shadows'.toUpperCase()}
+          {'More Moiré'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -69,7 +69,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/moire' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -90,7 +90,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/persianRug' }
+       onClick={()=>window.location ='#/shadows' }
         
         >
           {'<'.toUpperCase()}
