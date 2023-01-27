@@ -36,6 +36,8 @@ import PersianRug from './persianRug/PersianRug'
 import Shadows from './shadows/Shadows'
 import Moire from './moire/Moire'
 import Textile from './textile/Textile'
+import Kusama from './kusama/Kusama'
+
 
 
 
@@ -75,6 +77,8 @@ const router = createHashRouter(
         <Route path="/shadows" element={<Shadows />} />
         <Route path="/moire" element={<Moire />} />
         <Route path="/textile" element={<Textile />} />
+        <Route path="/kusama" element={<Kusama />} />
+
 
 
         </>

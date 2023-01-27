@@ -43,13 +43,13 @@ useFrame((state, delta) => {
          <Text
         
         font="../Basement.otf"
-        scale={ 6 }
+        scale={ 7 }
        
-        position={ [ .0, -2.75, 0 ] }
+        position={ [ .0, -2.65, 0 ] }
         
         
         >
-          {'Textile'.toUpperCase()}
+          {'Yayoi Kusama'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -69,7 +69,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/kusama' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -90,7 +90,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/moire' }
+       onClick={()=>window.location ='#/textile' }
         
         >
           {'<'.toUpperCase()}
@@ -109,7 +109,7 @@ useFrame((state, delta) => {
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
-      <planeGeometry args={[4, 4, 100, 100]} />
+      <planeGeometry args={[4, 4]} />
       <planeMaterial ref={planeMaterial} side={THREE.DoubleSide}/>
       
     </mesh>
