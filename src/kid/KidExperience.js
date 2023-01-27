@@ -43,13 +43,13 @@ useFrame((state, delta) => {
          <Text
         
         font="../Basement.otf"
-        scale={ 7 }
-       
-        position={ [ .0, -2.65, 0 ] }
+        scale={ 4 }
+       maxWidth={1.5}
+        position={ [ .7, -2.75, 0 ] }
         
         
         >
-          {'Yayoi Kusama'.toUpperCase()}
+          {'My kid could have made that'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -69,7 +69,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/kid' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -90,7 +90,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/textile' }
+       onClick={()=>window.location ='#/kusama' }
         
         >
           {'<'.toUpperCase()}
