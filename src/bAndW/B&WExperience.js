@@ -98,7 +98,7 @@ useFrame((state, delta) => {
 <Float>
          <Text
         
-        font="../Basement.otf"
+        font="Basement.otf"
         scale={4. }
         maxWidth={2}
         position={ [ .0, -2.65, 0 ] }
@@ -117,7 +117,7 @@ useFrame((state, delta) => {
         <Float>
          <Text
         
-        font="../Basement.otf"
+        font="Basement.otf"
         scale={ 20 }
        
         position={ [ 4, 0, -0 ] }
@@ -139,7 +139,7 @@ useFrame((state, delta) => {
         <Float>
          <Text
         
-        font="../Basement.otf"
+        font="Basement.otf"
         scale={ 20 }
        
         position={ [ -4, 0, -0 ] }

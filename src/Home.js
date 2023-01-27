@@ -24,7 +24,7 @@ export default function Home(){
         <Float>
          <Text
         
-        font="../Basement.otf"
+        font="Basement.otf"
         scale={ 3 }
         maxWidth={2}
        
