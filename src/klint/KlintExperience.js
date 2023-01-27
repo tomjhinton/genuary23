@@ -108,7 +108,7 @@ useFrame((state, delta) => {
         <Float>
          <Text
         
-        font="../public/NotoEmoji-Bold.ttf"
+        font="NotoEmoji-Bold.ttf"
         scale={ 20 }
        
         position={ [ 0, 0, 0 ] }

@@ -8,6 +8,11 @@
     src: url('../public/FerriteCoreDX-Regular.otf');
   }
 
+  @font-face {
+    font-family: Basement;
+    src: url('../public/Basement.otf');
+  }
+
  
 html,
 body,
