@@ -38,6 +38,7 @@ import Moire from './moire/Moire'
 import Textile from './textile/Textile'
 import Kusama from './kusama/Kusama'
 import Kid from './kid/Kid'
+import Klint from './klint/Klint'
 
 
 
@@ -81,7 +82,7 @@ const router = createHashRouter(
         <Route path="/textile" element={<Textile />} />
         <Route path="/kusama" element={<Kusama />} />
         <Route path="/kid" element={<Kid />} />
-
+        <Route path="/klint" element={<Klint />} />
 
 
         </>

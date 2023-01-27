@@ -40,16 +40,19 @@ useFrame((state, delta) => {
 <OrbitControls makeDefault enableZoom={true} maxPolarAngle={Math.PI * .5}/>
 
 <Float>
+  
          <Text
         
         font="../Basement.otf"
         scale={ 4 }
        maxWidth={1.5}
-        position={ [ .7, -2.75, 0 ] }
+        position={ [ 0, -2.75, 0 ] }
+        textAlign={'center'}
+       
         
         
         >
-          {'My kid could have made that'.toUpperCase()}
+          {'In the style of Hilma Af Klint'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -69,7 +72,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/klint' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -90,7 +93,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/kusama' }
+       onClick={()=>window.location ='#/kid' }
         
         >
           {'<'.toUpperCase()}
@@ -102,17 +105,22 @@ useFrame((state, delta) => {
         </Float>
 
 
-<mesh
-     
-      ref={ref}
-      scale={clicked ? 1. : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}>
-      <planeGeometry args={[4, 4]} />
-      <planeMaterial ref={planeMaterial} side={THREE.DoubleSide}/>
-      
-    </mesh>
+        <Float>
+         <Text
+        
+        font="../NotoEmoji-Bold.ttf"
+        scale={ 20 }
+       
+        position={ [ 0, 0, 0 ] }
+        
+        
+        >
+          🎨👻 
+          <planeMaterial ref={planeMaterial} side={THREE.DoubleSide}/>
+        </Text>
+        </Float>
+
+
       </>
     )
 }
