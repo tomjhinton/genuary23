@@ -8,12 +8,29 @@ import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 
-let invisible = new THREE.MeshPhongMaterial({opacity:0})
-let fonts = ['FerriteCoreDX-Regular.otf', 'Basement.otf', 'Passio-Graphis.otf']
+import * as random from "maath/random";
+import * as buffer from "maath/buffer";
+import * as misc from "maath/misc";
+
+function sliceIntoChunks(arr, chunkSize) {
+  const res = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+      const chunk = arr.slice(i, i + chunkSize);
+      res.push(chunk);
+  }
+  return res;
+}
+
+let sphere = new THREE.SphereGeometry( 1, 20, 20 );
+
+let plane = new THREE.PlaneGeometry( 3, 3, 20, 20 );
+
+let planeArr = Array.from(sliceIntoChunks(plane.attributes.position.array, 3))
 
 
-let words = "The sky above the port was the color of television, tuned to a dead channel. It's not like I'm using,' Case heard someone say, as he shouldered his way through the crowd around the door of the Chat. `It's like my body's developed this massive drug deficiency.' It was a Sprawl voice and a Sprawl joke. The Chatsubo was a bar for professional expatriates; you could drink there for a week and never hear two words in Japanese."
-let wordsArray = words.split(' ')
+let box = new THREE.BoxGeometry( 2, 2, 2, 15, 15, 15 );
+let torus = new THREE.TorusKnotGeometry( 1, .25, 150, 8 );
+
 export default function Experience(){
  
 
@@ -32,7 +49,19 @@ export default function Experience(){
     )
     extend({PointMaterial})
 
-   
+    const final = torus.attributes.position.array.slice(0); // final buffer that will be used for the points mesh
+
+    useFrame(({ clock }) => {
+      const et = clock.getElapsedTime();
+      const t = misc.remap(Math.sin(et), [-1, 1], [0, 1]);
+      const t2 = misc.remap(Math.cos(et * 3), [-1, 1], [0, 1]);
+    
+      // buffer.rotate(box, {
+      //   q: q.setFromAxisAngle(rotationAxis, t2 * 0.1),
+      // });
+    
+      buffer.lerp(box.attributes.position.array, torus.attributes.position.array, final, t);
+    });
 
 const ref = useRef()
 // Hold state for hovered and clicked events
@@ -40,16 +69,11 @@ const [hovered, hover] = useState(false)
 const [clicked, click] = useState(false)
 
 
-function makeInvisible(e){
-  e.stopPropagation()
-  e.object.material = invisible
-}
+
 
 const pointMaterial = useRef()
 useFrame((state, delta) => {
    pointMaterial.current.uTime += delta
-
-   
 
     if (
      pointMaterial.current.uResolution.x === 0 &&
@@ -63,7 +87,11 @@ useFrame((state, delta) => {
 
 
 // Subscribe this component to the render-loop, rotate the mesh every frame
-// useFrame((state, delta) => (ref.current.rotation.x += delta))
+useFrame((state, delta) => (ref.current.rotation.x += delta))
+useFrame((state, delta) => (ref.current.rotation.y -= (delta * .4)))
+useFrame((state, delta) => (ref.current.rotation.z += (delta * .55)))
+
+
     return(
 
 <>
@@ -79,7 +107,7 @@ useFrame((state, delta) => {
         
         
         >
-          {'Generative poetry'.toUpperCase()}
+          {'Maximalism'.toUpperCase()}
           <meshBasicMaterial color="#f3172d" toneMapped={false}
           side={THREE.DoubleSide}
           />
@@ -99,7 +127,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/maximalism' }
+     onClick={()=>window.location = '#/' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
@@ -120,7 +148,7 @@ useFrame((state, delta) => {
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
       }
        onPointerOut={()=>  document.body.style.cursor = 'auto'}
-       onClick={()=>window.location ='#/klint' }
+       onClick={()=>window.location ='#/poetry' }
         
         >
           {'<'.toUpperCase()}
@@ -132,27 +160,10 @@ useFrame((state, delta) => {
         </Float>
 
 
-        <pointMaterial ref={pointMaterial} depthWrite={true} transparent />
-      
-      {wordsArray.map( (x, i) => {
-        
-        return(
-          <>
-        <Text position={[(Math.random() * 5.)-2,( Math.random() *4.)-2, Math.random()]}  key={i} 
-        scale={ 2 }
-        material={pointMaterial.current}
-        onPointerEnter={(e)=>e.object.material = pointMaterial.current}
-        onPointerLeave={(e)=> setTimeout(makeInvisible, 1000, e) }
-        font={fonts[Math.floor(Math.random() * fonts.length)]}
-        
-        >
-          {x}
-          <meshPhongMaterial opacity={0}/>
-         </Text>
-        </>
-      )} )}
-
-   
+    
+        <Points positions={final} stride={3} ref={ref} >
+        <pointMaterial ref={pointMaterial} depthWrite={false} transparent />
+    </Points>
       </>
     )
 }

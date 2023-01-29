@@ -40,6 +40,8 @@ import Kusama from './kusama/Kusama'
 import Kid from './kid/Kid'
 import Klint from './klint/Klint'
 import Poetry from './poetry/Poetry'
+import Maximalism from './maximalism/Maximalism'
+
 
 
 
@@ -85,6 +87,7 @@ const router = createHashRouter(
         <Route path="/kid" element={<Kid />} />
         <Route path="/klint" element={<Klint />} />
         <Route path="/poetry" element={<Poetry />} />
+        <Route path="/maximalism" element={<Maximalism />} />
 
 
         </>
