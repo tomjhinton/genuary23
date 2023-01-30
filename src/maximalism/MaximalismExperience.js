@@ -127,7 +127,7 @@ useFrame((state, delta) => (ref.current.rotation.z += (delta * .55)))
         onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
     }
      onPointerOut={()=>  document.body.style.cursor = 'auto'}
-     onClick={()=>window.location = '#/' }
+     onClick={()=>window.location = '#/minimalism' }
         >
           {'>'.toUpperCase()}
           <meshBasicMaterial color="orange" toneMapped={false}
