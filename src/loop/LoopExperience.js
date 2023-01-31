@@ -74,6 +74,27 @@ useFrame((state, delta) => {
         </Text>
         </Float>
 
+        <Float>
+         <Text
+        
+        font="Basement.otf"
+        scale={ 20 }
+       
+        position={ [ -4, 0, -0 ] }
+        onPointerOver={ ()=>  document.body.style.cursor = 'pointer'
+      }
+       onPointerOut={()=>  document.body.style.cursor = 'auto'}
+       onClick={()=>window.location ='#/break' }
+        
+        >
+          {'<'.toUpperCase()}
+          <meshBasicMaterial color="orange" toneMapped={false}
+          side={THREE.DoubleSide}
+         
+          />
+        </Text>
+        </Float>
+
 
 <mesh
      

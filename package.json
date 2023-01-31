@@ -29,7 +29,8 @@
     "react-router-dom": "^6.5.0",
     "react-scripts": "^5.0.1",
     "sort-by": "^1.2.0",
-    "three": "^0.145.0"
+    "three": "^0.145.0",
+    "tone": "^14.7.77"
   },
   "browserslist": {
     "production": [

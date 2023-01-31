@@ -21,6 +21,7 @@ import Steal from './steal/Steal'
 import Cover from './cover/Cover'
 import SDF from './sdf/SDF'
 import Plant from './plants/Plant'
+import Music from './music/Music'
 import Super from './supermatism/Super'
 import Tesselation from './tesselation/Tesselation'
 import Always from './always/Always'
@@ -42,6 +43,8 @@ import Klint from './klint/Klint'
 import Poetry from './poetry/Poetry'
 import Maximalism from './maximalism/Maximalism'
 import Minimalism from './minimalism/Minimalism'
+import Break from './breakStuff/Break'
+
 
 
 
@@ -70,6 +73,7 @@ const router = createHashRouter(
         <Route path="/cover" element={<Cover />} />
         <Route path="/sdf" element={<SDF />} />
         <Route path="/plant" element={<Plant />} />
+        <Route path="/music" element={<Music />} />
         <Route path="/super" element={<Super />} />
         <Route path="/tesselation" element={<Tesselation />} />
         <Route path="/always" element={<Always />} />
@@ -90,6 +94,7 @@ const router = createHashRouter(
         <Route path="/poetry" element={<Poetry />} />
         <Route path="/maximalism" element={<Maximalism />} />
         <Route path="/minimalism" element={<Minimalism />} />
+        <Route path="/break" element={<Break />} />
 
 
 
